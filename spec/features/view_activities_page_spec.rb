@@ -2,12 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'User view activities page' do
   scenario 'they see exsiting activities' do
-    activity = Activity.create(
-      user_id: 2,
-      action: Activity::ACTION_TYPES[:COMPLETE_TODO],
-      subject_type: 'Todo',
-      subject_id: 2
-    )
+    activity = create(:activity)
 
     visit activities_url
 
