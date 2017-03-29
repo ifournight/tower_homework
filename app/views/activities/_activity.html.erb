@@ -1,0 +1,4 @@
+<%= content_tag_for :li, activity do %>
+  <%= "user #{activity.user_id} #{activity.action} #{activity.subject_type} #{activity.subject_id}" %>
+  <small data-role="datetime"><%= time_ago_in_words(activity.created_at) %></small>
+<% end %>
