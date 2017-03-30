@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170329095740) do
+ActiveRecord::Schema.define(version: 20170330064425) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "user_id",      null: false
@@ -22,6 +22,19 @@ ActiveRecord::Schema.define(version: 20170329095740) do
     t.index ["subject_id"], name: "index_activities_on_subject_id"
     t.index ["subject_type"], name: "index_activities_on_subject_type"
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "todos", force: :cascade do |t|
+    t.integer  "creator_id"
+    t.string   "title",                       null: false
+    t.text     "description"
+    t.boolean  "completed",   default: false
+    t.boolean  "deleted",     default: false
+    t.datetime "deadline"
+    t.datetime "edited_at"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["creator_id"], name: "index_todos_on_creator_id"
   end
 
   create_table "users", force: :cascade do |t|
