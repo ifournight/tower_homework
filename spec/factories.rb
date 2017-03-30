@@ -2,6 +2,10 @@ FactoryGirl.define do
   factory :todo do
     creator
     sequence(:title) { |n| "Todo #{n}" }
+
+    trait :invalid do
+      title nil
+    end
   end
 
   factory :user, aliases: [:creator] do
