@@ -1,8 +1,8 @@
 <section class='hero'>
   <nav class='nav'>
     <div class='nav-left'>
-      <a class='nav-item'>主页</a>
-      <a class='nav-item'>动态</a>
+      <%= link_to '主页', root_path, class: 'nav-item' %>
+      <%= link_to '动态', activities_path, class: 'nav-item' %>
     </div>
 
     <div class='nav-center'>
