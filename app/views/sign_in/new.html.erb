@@ -1,0 +1,10 @@
+<%= form_for(@sign_in, url: { controller: 'sign_in', action: 'create'}) do |f| %>
+  <%= render 'shared/error_messages', object: @sign_in %>
+
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.submit "Sign in!" %>
+<% end %>

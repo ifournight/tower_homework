@@ -48,6 +48,8 @@ group :development, :test do
   gem 'capybara'
 
   gem 'factory_girl_rails'
+
+  gem 'rack_session_access'
 end
 
 group :development do
