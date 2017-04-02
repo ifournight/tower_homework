@@ -1,10 +1,21 @@
-<%= form_for create_todo do |f| %>
+<%= form_for create_todo, remote: true do |f| %>
   <%= f.hidden_field :creator_id, value: create_todo.creator_id %>
   <div class='field'>
     <p class='control'>
-      <%= f.text_field :title, class:'input is-normal', placeholder: "新的任务" %>
+      <% if create_todo.errors[:title].any? %>
+        <% title_class = 'input is-danger' %>
+      <% else %>
+        <% title_class = 'input is-normal' %>
+      <% end %>
+      <% title_class = 'input ' %>
+      <%= f.text_field :title, class: title_class, placeholder: "新的任务" %>
     </p>
+
+    <% if create_todo.errors[:title].any? %>
+      <p class="help is-danger"><%= create_todo.errors[:title].join %></p>
+    <% end %>
   </div>
+
   <div class='field'>
     <%= f.submit "创建任务", class: 'button is-primary is-medium' %>
   </div>

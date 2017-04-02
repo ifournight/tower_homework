@@ -1,11 +1,21 @@
 class CreateTodosController < Todos::BaseController
   def create
-    create_todo = CreateTodo.new(create_todo_params)
-    todo = create_todo.create
-    if todo
-      redirect_to root_url, notice: 'Todo created successfully.'
+    @create_todo = CreateTodo.new(create_todo_params)
+    @new_todo = @create_todo.create
+
+    if @new_todo
+      respond_to do |format|
+        format.html { redirect_to root_url }
+        format.js {}
+      end
     else
-      render 'home#index'
+      respond_to do |format|
+        format.html do
+          @todos = Todo.order('created_at DESC')
+          render 'home/index'
+        end
+        format.js {}
+      end
     end
   end
 

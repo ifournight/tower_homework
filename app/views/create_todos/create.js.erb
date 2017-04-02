@@ -1,0 +1,5 @@
+<% if @new_todo %>
+  $("<%= j (render @new_todo) %>").prependTo("#todo-list-uncompleted");
+<% end %>
+
+$('#todo-list-create').html($("<%= j (render @create_todo) %>"))
