@@ -32,7 +32,7 @@ class CreateTodo
       user_id: creator_id,
       action: Activity::ACTION_TYPES[:CREATE_TODO],
       subject_id: @todo.id,
-      subject_type: 'todo'
+      subject_type: 'Todo'
     )
   end
 end
