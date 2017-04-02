@@ -6,4 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create({ name: 'ifournight' })
+User.create(name: 'ifournight')
+
+Todo.create(
+  [
+    { title: 'First todo', creator_id: User.find_by(name: 'ifournight') }
+  ]
+)

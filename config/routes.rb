@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   get 'sign_in', to: 'sign_in#new'
   post 'sign_in', to: 'sign_in#create'
 
-  root 'todos#index'
+  root 'home#index'
 end

@@ -1,10 +1,26 @@
-<%= form_for(@sign_in, url: { controller: 'sign_in', action: 'create'}) do |f| %>
-  <%= render 'shared/error_messages', object: @sign_in %>
+<section class='section'>
+  <div class='columns' >
+    <div class="box column is-4 is-offset-4">
+      <%= form_for(@sign_in, url: { controller: 'sign_in', action: 'create'}) do |f| %>
 
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+        <div class='field'>
+          <%= f.label :name, class: 'label' %>
+          <p class="control">
+            <% input_class = "input is-medium" %>
+            <% if @sign_in.errors[:name] %>
+              <% input_class += "is_danger" %>
+            <% end %>
+            <%= f.text_field :name, class: input_class, placeholder: "Enter user name" %>
+          </p>
+          <% if @sign_in.errors[:name].any? %>
+            <p class="help is-danger"><%= @sign_in.errors[:name][0] %></p>
+          <% end %>
+        </div>
+
+        <div class='field'>
+          <%= f.submit "Sign in!", class: 'button is-primary is-medium' %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <%= f.submit "Sign in!" %>
-<% end %>
+</section>
