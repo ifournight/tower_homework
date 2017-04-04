@@ -1,0 +1,7 @@
+<p data-role='activity-content'>
+  <strong data-role='activity-username'><%= activity.user.name %></strong>
+  <span data-role='activity-description'>
+    重新打开了任务:
+    <%= link_to activity.subject.title, root_path, 'data-role': 'activity-subject' %>
+  </span>
+</p>

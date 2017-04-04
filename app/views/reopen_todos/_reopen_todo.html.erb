@@ -1,3 +1,6 @@
-<button class='button is-ghost complete-todo' %>
+<%= button_to ReopenTodo.new,
+              class: 'button is-ghost complete-todo',
+              id: "reopen-todo_#{todo.id}",
+              params: { reopen_todo: { user_id: user.id, todo_id: todo.id } } do |b| %>
   <i class='fa fa-check-square-o fa-2x complete-todo-icon is-completed'></i>
-</button>
+<% end %>

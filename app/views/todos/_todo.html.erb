@@ -2,7 +2,8 @@
   <div class='level'>
     <div class='level-left'>
       <% if todo.completed %>
-        <%= render 'reopen_todos/reopen_todo' %>
+      <% reopen_todo = ReopenTodo.new %>
+      <%= render reopen_todo, todo: todo, user: current_user%>
       <% else %>
         <% complete_todo = CompleteTodo.new %>
         <%= render complete_todo, todo: todo, user: current_user%>

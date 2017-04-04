@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :complete_todos, only: [:create]
 
+  resources :reopen_todos, only: [:create]
+
   namespace :api do
     namespace :v1 do
       resources :create_todos, only: [:create]
