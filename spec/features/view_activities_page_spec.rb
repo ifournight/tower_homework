@@ -10,7 +10,6 @@ RSpec.feature 'User view activities page' do
     visit activities_url
 
     a = activity
-    expect(page).to have_css "#activity_#{a.id}",
-                             text: "user #{a.user_id} #{a.action} #{a.subject_type} #{a.subject_id}"
+    expect(page).to have_css "#activity_#{a.id}"
   end
 end

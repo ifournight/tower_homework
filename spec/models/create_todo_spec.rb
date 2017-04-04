@@ -14,7 +14,7 @@ RSpec.describe CreateTodo, '#create' do
         user_id: user.id,
         action: Activity::ACTION_TYPES[:CREATE_TODO],
         subject_id: todo.id,
-        subject_type: 'todo'
+        subject_type: 'Todo'
       }
       create_todo = CreateTodo.new(create_params)
       allow(Todo).to receive(:create).and_return(todo)

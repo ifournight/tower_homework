@@ -22,9 +22,7 @@ RSpec.feature 'User create a new todo' do
 
     visit activities_path
 
-    todo = Todo.last
     activity = Activity.last
-    expect(page).to have_css "#activity_#{activity.id}",
-                             text: "user #{@user.id} create_todo todo #{todo.id}"
+    expect(page).to have_css "#activity_#{activity.id}"
   end
 end
