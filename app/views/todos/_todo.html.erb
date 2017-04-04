@@ -1,3 +1,13 @@
 <%= content_tag_for :li, todo, style: 'margin-bottom: 0.5em;' do %>
-  <span><%= todo.title %> </span>
+  <div class='level'>
+    <div class='level-left'>
+      <% if todo.completed %>
+        <%= render 'reopen_todos/reopen_todo' %>
+      <% else %>
+        <% complete_todo = CompleteTodo.new %>
+        <%= render complete_todo, todo: todo, user: current_user%>
+      <% end %>
+      <span class='level-item'><%= todo.title %> </span>
+    </div>
+  </div>
 <% end %>

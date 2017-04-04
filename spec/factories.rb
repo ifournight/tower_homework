@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :todo do
+  factory :todo, aliases: [:subject] do
     creator
     sequence(:title) { |n| "Todo #{n}" }
 
@@ -14,8 +14,13 @@ FactoryGirl.define do
 
   factory :activity do
     user
+    subject
     action Activity::ACTION_TYPES[:COMPLETE_TODO]
-    subject_type 'Todo'
-    subject_id 1
+
+    trait :create_todo do
+      user
+      subject
+      action Activity::ACTION_TYPES[:CREATE_TODO]
+    end
   end
 end

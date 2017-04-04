@@ -1,0 +1,16 @@
+.complete-todo {
+  margin-right: 0.5em;
+}
+
+.complete-todo-icon {
+  color: hsl(0, 0%, 96%);
+
+  transition: color 0.5s ease;
+  &:hover {
+    color: hsl(0, 0%, 86%);
+  }
+}
+
+.complete-todo-icon.is-completed {
+  color: hsl(171, 100%, 41%);
+}

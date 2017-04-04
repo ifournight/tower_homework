@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def index
-    @todos = Todo.order('created_at DESC')
+    @uncompleted_todos = Todo.where('completed = ?', false).order('edited_at DESC')
+    @completed_todos = Todo.where('completed = ?', true).order('edited_at DESC')
     @create_todo = CreateTodo.new(creator_id: current_user.id)
   end
 end

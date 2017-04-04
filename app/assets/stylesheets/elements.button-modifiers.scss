@@ -1,0 +1,13 @@
+.button.is-ghost {
+  border: none;
+  padding: 0;
+  width: auto;
+  height: auto;
+  appearance: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    border: none;
+  }
+}

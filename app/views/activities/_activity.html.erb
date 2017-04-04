@@ -1,16 +1,16 @@
-<%= content_tag_for :li, activity, style: 'margin-bottom: 1em;' do %>
+<%= content_tag_for :li, activity, style: 'margin-bottom: 2em;' do %>
   <article class='level'>
     <div class='level-left'>
-      <small class='level-item' style='width: 60px;'><%= time_ago_in_words activity.created_at %></small>
+      <small class='level-item' style='width: 60px;' data-role='activity-created-at'><%= time_ago_in_words activity.created_at %></small>
       <div class='level-item media'>
         <figure class='media-left'>
           <p class="image is-48x48">
             <img src="https://tower.im/assets/default_avatars/path.jpg"
-             style='border-radius: 50%;'>
+             style='border-radius: 50%;' data-role='activity-user-avatar'>
           </p>
         </figure>
         <div class='media-content'>
-          <div class='content'>
+          <div class='content' data-role='activity-content-wrapper'>
             <%= render "activities/activity_#{activity.action}", activity: activity %>
           </div>
         </div>

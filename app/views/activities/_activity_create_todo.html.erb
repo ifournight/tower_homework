@@ -1,4 +1,7 @@
-<p>
-  <strong><%= activity.user.name %></strong>
-  <%= "创建了任务: #{activity.subject.title}" %>
+<p data-role='activity-content'>
+  <strong data-role='activity-username'><%= activity.user.name %></strong>
+  <span data-role='activity-description'>
+    创建了任务:
+    <%= link_to activity.subject.title, root_path, 'data-role': 'activity-subject' %>
+  </span>
 </p>
