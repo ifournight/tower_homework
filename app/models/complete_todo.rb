@@ -3,14 +3,18 @@ class CompleteTodo
 
   attr_accessor(
     :user_id,
-    :todo_id
+    :todo_id,
+    :status_code
   )
 
   def complete
     errors[:user_id] << 'Invalid user ID' unless valid_user
     errors[:todo_id] << 'Invalid todo ID' unless valid_todo
 
-    return nil if any_errors?
+    if any_errors?
+      self.status_code = :bad_request
+      return nil
+    end
 
     @user = User.find(user_id)
     @todo = Todo.find(todo_id)
@@ -18,7 +22,10 @@ class CompleteTodo
     errors[:todo_id] << "Can't edit deleted" if @todo.deleted
     errors[:todo_id] << "Can't complete completed" if @todo.completed
 
-    return nil if any_errors?
+    if any_errors?
+      self.status_code = :method_not_allowed
+      return nil
+    end
 
     complete_todo
     create_activity_complete_todo
