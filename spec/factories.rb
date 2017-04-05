@@ -1,5 +1,17 @@
 FactoryGirl.define do
+  factory :project do
+    creator
+    team
+    sequence(:name) { |n| "Project #{n}" }
+  end
+
+  factory :team do
+    owner
+    sequence(:name) { |n| "Team #{n}" }
+  end
+
   factory :todo, aliases: [:subject] do
+    project
     creator
     sequence(:title) { |n| "Todo #{n}" }
 
@@ -8,7 +20,7 @@ FactoryGirl.define do
     end
   end
 
-  factory :user, aliases: [:creator] do
+  factory :user, aliases: [:creator, :owner] do
     sequence(:name) { |n| "User #{n}" }
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170405063656) do
+ActiveRecord::Schema.define(version: 20170405080229) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "user_id",      null: false
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 20170405063656) do
     t.index ["subject_id"], name: "index_activities_on_subject_id"
     t.index ["subject_type"], name: "index_activities_on_subject_type"
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.integer  "team_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "creator_id"
+    t.index ["creator_id"], name: "index_projects_on_creator_id"
+    t.index ["name"], name: "index_projects_on_name"
+    t.index ["team_id"], name: "index_projects_on_team_id"
   end
 
   create_table "team_memberships", force: :cascade do |t|
@@ -54,7 +66,9 @@ ActiveRecord::Schema.define(version: 20170405063656) do
     t.datetime "edited_at"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.integer  "project_id"
     t.index ["creator_id"], name: "index_todos_on_creator_id"
+    t.index ["project_id"], name: "index_todos_on_project_id"
   end
 
   create_table "users", force: :cascade do |t|
