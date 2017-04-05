@@ -7,7 +7,7 @@ class TeamMembership < ApplicationRecord
     ADMIN: 'admin',
     MEMBER: 'member',
     GUEST: 'guest'
-  }
+  }.freeze
 
   validates :member_authority, presence: true
   validates :member_authority, inclusion: { in: MEMBERSHIP_AUTHORITY.values }

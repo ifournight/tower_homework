@@ -1,4 +1,10 @@
 FactoryGirl.define do
+  factory :access do
+    user
+    type Access::ACCESS_TYPE[:PROJECT_COLLABORATOR]
+    association :subject, factory: :project
+  end
+
   factory :project do
     creator
     team
