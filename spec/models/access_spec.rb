@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Access, 'validations' do
   it do
-    is_expected.to validate_presence_of(:type)
-    is_expected.to validate_inclusion_of(:type)
+    is_expected.to validate_presence_of(:access_type)
+    is_expected.to validate_inclusion_of(:access_type)
       .in_array(Access::ACCESS_TYPE.values)
   end
 end

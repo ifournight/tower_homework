@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :access do
     user
-    type Access::ACCESS_TYPE[:PROJECT_COLLABORATOR]
+    access_type Access::ACCESS_TYPE[:PROJECT_COLLABORATOR]
     association :subject, factory: :project
   end
 

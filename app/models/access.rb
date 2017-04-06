@@ -14,14 +14,16 @@ class Access < ApplicationRecord
     SLACK_LINKING: 'access_type_slack_linking'
   }.freeze
 
-  validates :type, presence: true
-  validates :type, inclusion: { in: ACCESS_TYPE.values }
+  ACCESS_GROUP_SUPERADMIN = ACCESS_TYPE.values.freeze
+
+  validates :access_type, presence: true
+  validates :access_type, inclusion: { in: ACCESS_TYPE.values }
 
   def self.has_access?(user_id, subject_id, subject_type, access_type)
     return true if where(user_id: user_id,
                          subject_id: subject_id,
                          subject_type: subject_type,
-                         type: access_type).any?
+                         access_type: access_type).any?
     false
   end
 end
