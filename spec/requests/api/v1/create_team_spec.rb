@@ -14,7 +14,6 @@ RSpec.describe 'POST /api/v1/create_teams' do
 
     expect(response.status).to eq 201
     expect(@user.reload.owned_teams.include?(team)).to eq true
-    debugger
     expect(json_body['team']['name']).to eq team.name
   end
 

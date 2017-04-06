@@ -7,6 +7,14 @@ class TeamMemberQuery
     )
   end
 
+  def fine_team_member(team, &block)
+    find_given_type_team_member(
+      team,
+      TeamMembership::MEMBERSHIP_AUTHORITY[:MEMBER],
+      &block
+    )
+  end
+
   private
 
   def find_given_type_team_member(team, member_authority)

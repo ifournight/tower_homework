@@ -13,10 +13,12 @@ RSpec.describe Access, '.has_access' do
     user = create(:user)
     team = create(:team, owner: user)
     project = create(:project, team: team, creator: user)
-    _access = create(:access,
-                     user: user,
-                     type: Access::ACCESS_TYPE[:PROJECT_COLLABORATOR],
-                     subject: project)
+    _access = Access.create(
+      user_id: user.id,
+      type: Access::ACCESS_TYPE[:PROJECT_COLLABORATOR],
+      subject_id: project.id,
+      subject_type: project.class.name
+    )
 
     result = Access.has_access?(user.id,
                                 project.id,

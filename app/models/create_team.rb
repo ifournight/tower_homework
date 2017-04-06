@@ -66,7 +66,7 @@ class CreateTeam
     )
 
     # use prefabed access group to batchly factory accesses
-    Access::ACCESS_GROUP_SUPERADMIN.each do |access_type|
+    Access::ACCESS_GROUP_SUPERADMIN[:TEAM].each do |access_type|
       Access.create(
         user_id: creator_id,
         subject_id: @team.id,

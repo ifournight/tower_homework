@@ -15,7 +15,7 @@ RSpec.describe CreateTeam, '#do' do
     expect(team.owner.id).to eq user.id
     expect(user.owned_teams.include?(team)).to eq true
     expect(superadmin.id).to eq user.id
-    Access::ACCESS_GROUP_SUPERADMIN.each do |access_type|
+    Access::ACCESS_GROUP_SUPERADMIN[:TEAM].each do |access_type|
       expect(Access.has_access?(user.id, team.id, team.class.name, access_type)).to eq true
     end
   end
