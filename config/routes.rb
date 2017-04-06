@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :create_todos, only: [:create]
       resources :complete_todos, only: [:create]
+      resources :create_teams, only: [:create]
     end
   end
 

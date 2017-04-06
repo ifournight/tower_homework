@@ -73,6 +73,8 @@ GEM
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
     ffi (1.9.18)
+    flatpickr_rails (1.0.0)
+      railties (>= 3.0)
     font-awesome-rails (4.7.0.1)
       railties (>= 3.2, < 5.1)
     globalid (0.3.7)
@@ -199,13 +201,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers (~> 0.8.0)
+  active_model_serializers
   bulma-rails (~> 0.4.0)
   byebug
   capybara
   coffee-rails (~> 4.2)
   database_cleaner
   factory_girl_rails
+  flatpickr_rails
   font-awesome-rails
   jquery-rails
   listen (~> 3.0.5)
