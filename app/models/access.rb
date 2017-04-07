@@ -3,18 +3,18 @@ class Access < ApplicationRecord
   belongs_to :subject, polymorphic: true
 
   ACCESS_TYPE = {
-    PROJECT_COLLABORATOR: 'access_type_project_collaborator', #特殊：标记加入Project
-    DELETE_PROJECT: 'access_type_delete_project', # 删除指定Project
-    READ_PROJECT: 'access_type_read_project', # 只读Project
-    WRITE_PROJECT: 'access_type_write_project', # 在Project中创建（任务等...
-    PROJECT_COLLABORATOR_MANAGE: 'access_type_projecdt_collaborator_manage',
+    PROJECT_COLLABORATOR: 'at_project_collaborator', #特殊：标记加入Project
+    DELETE_PROJECT: 'at_delete_project', # 删除指定Project
+    READ_PROJECT: 'at_read_project', # 只读Project
+    WRITE_PROJECT: 'at_write_project', # 在Project中创建（任务等...
+    PROJECT_COLLABORATOR_MANAGE: 'at_projecdt_collaborator_manage',
 
-    CREATE_TEAM_PROJECTS: 'access_type_create_projects', # 在团队中创建Project
-    DELETE_TEAM_PROJECTS: 'access_type_delete_projects', #在团队中删除任意Project
-    INVITE_JOIN_TEAM: 'access_type_invite_join_team', #邀请新的成员
-    TEAM_MEMBER_MANAGE: 'access_type_team_member_manage', #成员管理：包括新加／删除成员，管理成员参与的Project
-    TEAM_MEMBER_AUTHORITY_MANAGE: 'access_type_team_member_authority_manage', #成员权限管理
-    READ_TEAM_MEMBER: 'read_team_memeber'
+    CREATE_TEAM_PROJECTS: 'at_create_projects', # 在团队中创建Project
+    DELETE_TEAM_PROJECTS: 'at_delete_projects', #在团队中删除任意Project
+    INVITE_JOIN_TEAM: 'at_invite_join_team', #邀请新的成员
+    TEAM_MEMBER_MANAGE: 'at_team_member_manage', #成员管理：包括新加／删除成员，管理成员参与的Project
+    TEAM_MEMBER_AUTHORITY_MANAGE: 'at_team_member_authority_manage', #成员权限管理
+    READ_TEAM_MEMBER: 'at_read_team_memeber'
   }.freeze
 
   AT = ACCESS_TYPE
