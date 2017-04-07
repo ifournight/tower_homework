@@ -1,6 +1,19 @@
 <section class='section' id="todo-list-section">
-  <h2 class='title is-2'>动态</h2>
-  <ul id="activity_feed">
-    <%= render @activities %>
-  <ul>
+  <% if @activities.any? %>
+    <% @activities_by_day.each do |day, by_day_group| %>
+      <section class='section'>
+        <h2 class='title is-h2'><%= day %></h2>
+        <% by_day_group.each do |project_id, by_project_group|  %>
+          <% project = Project.find(project_id) %>
+          <h3 class='title is-h3'><%= link_to project.name, project %></h3>
+          <ul>
+            <% by_project_group.each do |activity| %>
+              <%= render activity %>
+            <% end %>
+          </ul>
+          <br>
+        <% end %>
+      </section>
+    <% end %>
+  <% end %>
 </section>
