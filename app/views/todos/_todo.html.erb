@@ -9,6 +9,14 @@
         <%= render complete_todo, todo: todo, user: current_user%>
       <% end %>
       <span class='level-item'><%= todo.title %> </span>
+      <% unless todo.deadline.nil? %>
+        <% if todo.over_due? %>
+          <span class="tag is-danger is-primary"><%= todo.deadline.to_date  %></span>
+        <% else %>
+          <span class="tag is-info is-primary"><%= todo.deadline.to_date  %></span>
+        <% end %>
+      <% end %>
+      </span>
     </div>
   </div>
 <% end %>
