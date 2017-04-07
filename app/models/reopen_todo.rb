@@ -21,6 +21,7 @@ class ReopenTodo
 
     errors[:todo_id] << "Can't edit deleted" if @todo.deleted
     errors[:todo_id] << "Can't reopen uncompleted" unless @todo.completed
+    errors[:user_id] << "does't have access" unless check_user_access
 
     if any_errors?
       self.status_code = :method_not_allowed
@@ -55,12 +56,17 @@ class ReopenTodo
     @todo.save
   end
 
+  def check_user_access
+    Access.has_access?(user_id, @todo.project.id, 'Project', Access::ACCESS_TYPE[:WRITE_PROJECT])
+  end
+
   def create_activity_reopen_todo
     Activity.create(
       user_id: user_id,
       action: Activity::ACTION_TYPES[:REOPEN_TODO],
       subject_id: todo_id,
-      subject_type: 'Todo'
+      subject_type: 'Todo',
+      project_id: @todo.project.id
     )
   end
 end

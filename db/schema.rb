@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170405144650) do
+ActiveRecord::Schema.define(version: 20170406191235) do
 
   create_table "accesses", force: :cascade do |t|
     t.integer  "user_id"
@@ -32,6 +32,9 @@ ActiveRecord::Schema.define(version: 20170405144650) do
     t.integer  "subject_id",   null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "project_id"
+    t.string   "extra"
+    t.index ["project_id"], name: "index_activities_on_project_id"
     t.index ["subject_id"], name: "index_activities_on_subject_id"
     t.index ["subject_type"], name: "index_activities_on_subject_type"
     t.index ["user_id"], name: "index_activities_on_user_id"

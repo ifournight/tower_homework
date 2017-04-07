@@ -27,6 +27,7 @@ FactoryGirl.define do
   factory :activity do
     user
     subject
+    project
     action Activity::ACTION_TYPES[:COMPLETE_TODO]
 
     trait :create_todo do

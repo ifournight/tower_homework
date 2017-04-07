@@ -1,5 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe Activity, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe Activity, 'attributes' do
+  it 'serialize extra into Hash' do
+    extra = { key: 'value' }
+    activity = create(:activity, extra: extra)
+
+    expect(activity.extra[:key]).to eq 'value'
+  end
 end

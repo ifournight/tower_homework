@@ -6,4 +6,5 @@ end
 
 RSpec.describe Todo, '#relations' do
   it { should belong_to(:creator) }
+  it { should belong_to(:project) }
 end

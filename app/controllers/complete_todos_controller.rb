@@ -4,7 +4,7 @@ class CompleteTodosController < Todos::BaseController
     @todo = @complete_todo.complete
 
     if @todo
-      redirect_to root_path
+      redirect_to request.referer || root_path
     else
       render 'home/index'
     end

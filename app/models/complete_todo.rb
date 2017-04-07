@@ -21,6 +21,7 @@ class CompleteTodo
 
     errors[:todo_id] << "Can't edit deleted" if @todo.deleted
     errors[:todo_id] << "Can't complete completed" if @todo.completed
+    errors[:user_id] << "does't have access" unless check_user_access
 
     if any_errors?
       self.status_code = :method_not_allowed
@@ -49,6 +50,10 @@ class CompleteTodo
     Todo.exists?(todo_id)
   end
 
+  def check_user_access
+    Access.has_access?(user_id, @todo.project.id, 'Project', Access::ACCESS_TYPE[:WRITE_PROJECT])
+  end
+
   def complete_todo
     @todo.completed = true
     @todo.edited_at = Time.zone.now
@@ -60,7 +65,8 @@ class CompleteTodo
       user_id: user_id,
       action: Activity::ACTION_TYPES[:COMPLETE_TODO],
       subject_id: todo_id,
-      subject_type: 'Todo'
+      subject_type: 'Todo',
+      project_id: @todo.project.id
     )
   end
 end
