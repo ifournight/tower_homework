@@ -1,0 +1,9 @@
+<p data-role='activity-content'>
+  <strong data-role='activity-username'><%= activity.user.name %></strong>
+  <span data-role='activity-description'>
+    <% due_change_from = activity.extra[:due_change_from].blank? ? '没有截止日期' : DateTime.parse(activity.extra[:due_change_from]).to_date %>
+    <% due_change_to = activity.extra[:due_change_to].blank? ? '没有截止日期' : DateTime.parse(activity.extra[:due_change_to]).to_date %>
+    将任务完成时间从 <%= due_change_from %> 改为 <%= due_change_to %> :
+    <%= link_to activity.subject.title, root_path, 'data-role': 'activity-subject' %>
+  </span>
+</p>
