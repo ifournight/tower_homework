@@ -7,7 +7,7 @@ class Project < ApplicationRecord
     end
 
     def completed
-      Todo.where('completed = ?', true).order('edited_at DESC')
+      where('completed = ?', true).order('edited_at DESC')
     end
   end
 
