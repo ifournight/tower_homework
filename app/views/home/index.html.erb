@@ -1,23 +1,39 @@
-<section class='section' id="todo-list-section">
-  <h2 class='title is-2'>任务</h2>
+<section class='section' id="team-list-section">
 
-  <% if @completed_todos.any? %>
-  <section>
-    <h3 class='title is-3'>未完成</h3>
-    <ul id="todo-list-uncompleted">
-      <%= render @uncompleted_todos %>
-    </ul>
-  </section>
+  <% if @owned_teams.any? %>
+    <section class='section'>
+      <h2 class='title is-2'>拥有的团队</h2>
+      <% @owned_teams.each do |team| %>
+        <h3 class='title is-3'><%= team.name.upcase %></h3>
+        <ul>
+          <% @user.anticipated_projects_in_team(team).each do |project| %>
+            <% if project.collaborators.include?(@user) %>
+              <%= content_tag_for :li, project do %>
+                <%= link_to project.name, project %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+    </section>
   <% end %>
-  <% if @completed_todos.any? %>
-  <section>
-    <h3 class='title is-3'>已完成</h3>
-    <ul id="todo-list-completed">
-      <%= render @completed_todos %>
-    </ul>
-  </section>
+
+  <% if @joined_teams.any? %>
+    <section class='section'>
+      <h2 class='title is-2'>参与的团队</h2>
+      <% @joined_teams.each do |team| %>
+        <h3 class='title is-3'><%= team.name.upcase %></h3>
+        <ul>
+          <% @user.anticipated_projects_in_team(team).each do |project| %>
+            <% if project.collaborators.include?(@user) %>
+              <%= content_tag_for :li, project do %>
+                <%= link_to project.name, project %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+    </section>
   <% end %>
-  <section id="todo-list-create">
-    <%= render @create_todo %>
-  </section>
+
 </section>

@@ -15,5 +15,19 @@ class ProjectCollaboratorQuery
       temp.map(&:user)
     end
   end
-end
+
+  def find_user_anticipated_projects_in_team(user, team)
+    projects = team.projects.to_a.keep_if do |project|
+      is_user_a_collaborator(user, project)
+    end
+  end
+
+  def is_user_a_collaborator(user, project)
+    Access.has_access?(
+      user.id,
+      project.id,
+      project.class.name,
+      Access::ACCESS_TYPE[:PROJECT_COLLABORATOR]
+    )
+  end
 end

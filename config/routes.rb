@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   resources :reopen_todos, only: [:create]
 
+  resources :projects, only: [:show]
+
   namespace :api do
     namespace :v1 do
       resources :create_todos, only: [:create]

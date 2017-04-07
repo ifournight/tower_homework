@@ -1,7 +1,15 @@
 class Project < ApplicationRecord
   belongs_to :team
   belongs_to :creator, class_name: 'User'
-  has_many :todos
+  has_many :todos do
+    def uncompleted
+      where('completed = ?', false).order('edited_at DESC')
+    end
+
+    def completed
+      Todo.where('completed = ?', true).order('edited_at DESC')
+    end
+  end
 
   def collaborators
     Access
