@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170406191235) do
+ActiveRecord::Schema.define(version: 20170407074847) do
 
   create_table "accesses", force: :cascade do |t|
     t.integer  "user_id"
@@ -70,6 +70,15 @@ ActiveRecord::Schema.define(version: 20170406191235) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_teams_on_name"
     t.index ["owner_id"], name: "index_teams_on_owner_id"
+  end
+
+  create_table "todo_members", force: :cascade do |t|
+    t.integer  "member_id",  null: false
+    t.integer  "todo_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["member_id"], name: "index_todo_members_on_member_id"
+    t.index ["todo_id"], name: "index_todo_members_on_todo_id"
   end
 
   create_table "todos", force: :cascade do |t|

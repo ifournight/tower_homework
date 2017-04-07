@@ -9,6 +9,7 @@ class Activity < ApplicationRecord
     CREATE_TODO: 'create_todo',
     COMPLETE_TODO: 'complete_todo',
     REOPEN_TODO: 'reopen_todo',
-    SET_DUE_TODO: 'set_due_todo'
+    SET_DUE_TODO: 'set_due_todo',
+    ASSIGN_TODO: 'assign_todo'
   }.freeze
 end

@@ -1,0 +1,18 @@
+<p data-role='activity-content'>
+  <strong data-role='activity-username'><%= activity.user.name %></strong>
+  <span data-role='activity-description'>
+    <% member_from_id = activity.extra[:member_from_id] %>
+    <% member_to_id = activity.extra[:member_to_id] %>
+    <% member_from = User.exists?(member_from_id) ? User.find(member_from_id) : nil %>
+    <% member_to = User.exists?(member_to_id) ? User.find(member_to_id) : nil %>
+
+    <% if member_from.nil? %>
+      给 <strong><%= member_to.name %></strong> 指派了任务:
+    <% else %>
+      将 <strong><%= member_from.name %></strong> 指派给 <strong><%= member_to.name %></strong>:
+    <% end %>
+
+    <%= link_to activity.subject.title, root_path, 'data-role': 'activity-subject' %>
+
+  </span>
+</p>

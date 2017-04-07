@@ -11,10 +11,14 @@
       <span class='level-item'><%= todo.title %> </span>
       <% unless todo.deadline.nil? %>
         <% if todo.over_due? %>
-          <span class="tag is-danger is-primary"><%= todo.deadline.to_date  %></span>
+          <span class="tag is-danger is-primary todo-tag"><%= todo.deadline.to_date %></span>
         <% else %>
-          <span class="tag is-info is-primary"><%= todo.deadline.to_date  %></span>
+          <span class="tag is-info is-primary todo-tag"><%= todo.deadline.to_date %></span>
         <% end %>
+      <% end %>
+
+      <% unless todo.assigned_member.nil? %>
+        <span class="tag is-info is-primary todo-tag"><%= todo.assigned_member.name %></span>
       <% end %>
       </span>
     </div>

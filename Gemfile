@@ -1,10 +1,9 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
-
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
@@ -27,7 +26,7 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
-gem "active_model_serializers"
+gem 'active_model_serializers'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -38,9 +37,9 @@ gem "active_model_serializers"
 
 gem 'record_tag_helper', '~> 1.0'
 
-gem "bulma-rails", "~> 0.4.0"
+gem 'bulma-rails', '~> 0.4.0'
 
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 
 gem 'flatpickr_rails'
 
@@ -58,6 +57,8 @@ group :development, :test do
   gem 'factory_girl_rails'
 
   gem 'rack_session_access'
+
+  gem 'guard-rspec', require: false
 end
 
 group :development do

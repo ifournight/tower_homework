@@ -1,9 +1,9 @@
 <section class='section' id="todo-list-section">
   <% if @activities.any? %>
-    <% @activities_by_day.each do |day, by_day_group| %>
+    <% @by_day_groups.each do |by_day_group| %>
       <section class='section'>
-        <h2 class='title is-h2'><%= day %></h2>
-        <% by_day_group.each do |project_id, by_project_group|  %>
+        <h2 class='title is-h2'><%= by_day_group[:day] %></h2>
+        <% by_day_group[:group].each do |project_id, by_project_group|  %>
           <% project = Project.find(project_id) %>
           <h3 class='title is-h3'><%= link_to project.name, project %></h3>
           <ul>

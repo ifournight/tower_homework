@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user, aliases: [:creator, :owner] do
+  factory :user, aliases: [:creator, :owner, :member] do
     sequence(:name) { |n| "User #{n}" }
   end
 
