@@ -6,7 +6,9 @@ RSpec.describe Project, 'validations' do
   end
 end
 
-RSpec.describe Project, 'has many todos' do
-  it { should have_many :todos }
+RSpec.describe Project, 'relations' do
+  it { should belong_to :team }
   it { should belong_to :creator }
+  it { should have_many :todos }
+  # it { should have_many :collaborators }
 end

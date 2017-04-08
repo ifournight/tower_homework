@@ -53,26 +53,26 @@ class Access < ApplicationRecord
   }.freeze
 
   ACCESS_GROUP_ADMIN = ACCESS_GROUP_MEMBER.deep_merge(
-    TEAM:
-    [
-      AT[:INVITE_JOIN_TEAM],
-      AT[:CREATE_TEAM_PROJECTS],
-      AT[:READ_TEAM_MEMBER],
-      AT[:TEAM_MEMBER_MANAGE],
-      AT[:TEAM_MEMBER_AUTHORITY_MANAGE]
-    ]
+  TEAM:
+  [
+    AT[:INVITE_JOIN_TEAM],
+    AT[:CREATE_TEAM_PROJECTS],
+    AT[:READ_TEAM_MEMBER],
+    AT[:TEAM_MEMBER_MANAGE],
+    AT[:TEAM_MEMBER_AUTHORITY_MANAGE]
+  ]
   ).freeze
 
   ACCESS_GROUP_SUPERADMIN = ACCESS_GROUP_ADMIN.deep_merge(
-    TEAM:
-    [
-      AT[:INVITE_JOIN_TEAM],
-      AT[:CREATE_TEAM_PROJECTS],
-      AT[:READ_TEAM_MEMBER],
-      AT[:TEAM_MEMBER_MANAGE],
-      AT[:TEAM_MEMBER_AUTHORITY_MANAGE],
-      AT[:DELETE_TEAM_PROJECTS]
-    ]
+  TEAM:
+  [
+    AT[:INVITE_JOIN_TEAM],
+    AT[:CREATE_TEAM_PROJECTS],
+    AT[:READ_TEAM_MEMBER],
+    AT[:TEAM_MEMBER_MANAGE],
+    AT[:TEAM_MEMBER_AUTHORITY_MANAGE],
+    AT[:DELETE_TEAM_PROJECTS]
+  ]
   ).freeze
 
   validates :access_type, presence: true

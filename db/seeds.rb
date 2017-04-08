@@ -68,7 +68,6 @@ if ifournight.owned_teams.blank?
 
   # ifournight private
 
-  debugger
   ifournight_private = CreateTeam.new(creator_id: ifournight.id, team_name: 'ifournight_private').do
 
   AddTeamMember.new(team_id: ifournight_private.id, authorizer_id: ifournight.id, member_id: moerlang_cat.id, member_authority: TeamMembership::MEMBERSHIP_AUTHORITY[:MEMBER]).do

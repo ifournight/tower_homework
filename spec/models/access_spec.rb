@@ -8,6 +8,11 @@ RSpec.describe Access, 'validations' do
   end
 end
 
+RSpec.describe Access, 'relations' do
+  it { should belong_to :user }
+  it { should belong_to :subject }
+end
+
 RSpec.describe Access, '.has_access' do
   it 'verify if user has centain types of access on subject' do
     user = create(:user)
@@ -15,7 +20,7 @@ RSpec.describe Access, '.has_access' do
     project = create(:project, team: team, creator: user)
     _access = Access.create(
       user_id: user.id,
-      type: Access::ACCESS_TYPE[:PROJECT_COLLABORATOR],
+      access_type: Access::ACCESS_TYPE[:PROJECT_COLLABORATOR],
       subject_id: project.id,
       subject_type: project.class.name
     )

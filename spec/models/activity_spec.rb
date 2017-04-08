@@ -1,10 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Activity, 'attributes' do
-  it 'serialize extra into Hash' do
-    extra = { key: 'value' }
-    activity = create(:activity, extra: extra)
-
-    expect(activity.extra[:key]).to eq 'value'
-  end
+RSpec.describe Activity, 'relations' do
+  it { should belong_to :user }
+  it { should belong_to :subject }
+  it { should belong_to :project }
 end

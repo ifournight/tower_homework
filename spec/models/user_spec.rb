@@ -11,5 +11,7 @@ end
 RSpec.describe User, 'has many teams' do
   it { should have_many :team_memberships }
   it { should have_many :owned_teams }
-  it { should have_many(:joined_teams).through(:team_memberships).source(:member) }
+  it { should have_many(:joined_teams).through(:team_memberships).source(:team) }
+  it { should have_many(:todo_members) }
+  it { should have_many(:working_todos).through(:todo_members).source(:todo) }
 end
