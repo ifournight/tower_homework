@@ -11,15 +11,14 @@ class Project < ApplicationRecord
     end
   end
 
-  has_many :collaborators,
-    -> {
-      Access
+  def collaborators
+    Access
       .where(
         subject_id: id,
         subject_type: self.class.name,
         access_type: Access::ACCESS_TYPE[:PROJECT_COLLABORATOR]
       ).map(&:user)
-    }
+  end
 
   validates :name, presence: true
 end

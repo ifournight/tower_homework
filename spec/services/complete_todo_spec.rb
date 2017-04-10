@@ -3,7 +3,10 @@ require 'rails_helper'
 RSpec.describe CompleteTodo, '#create' do
   context 'with valid params' do
     it 'complete todo and create related activity' do
-      todo = create(:todo)
+      user = create(:user)
+      team = create(:team, owner: user)
+      project = create(:project, creator: user, team: team)
+      todo = create(:todo, project: project, creator: user)
       Access.create(
         user_id: todo.creator_id,
         subject_id: todo.project.id,
@@ -12,7 +15,6 @@ RSpec.describe CompleteTodo, '#create' do
       )
       complete_todo = CompleteTodo.new(user_id: todo.creator.id,
                                        todo_id: todo.id)
-
 
       complete_todo.complete
       activity = Activity.last

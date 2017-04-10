@@ -1,22 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe CreateTodo, '#validations' do
-  it { is_expected.to validate_presence_of :title }
-end
-
 RSpec.describe CreateTodo, '#create' do
   context 'when valid' do
     it 'call create_todo and create_activity_create_todo' do
       user = create(:user)
-      team = CreateTeam.new(
-        team_name: 'Citizen 4',
-        creator_id: user.id
-      ).do
-      project = CreateProject.new(
-        creator_id: user.id,
-        team_id: team.id,
-        project_name: 'V coming'
-      ).do
+      project = create_logic_project(team_name: 'Citizen 4', project_name: 'V coming', creator: user)
       create_params = {
         title: 'First todo',
         creator_id: user.id,

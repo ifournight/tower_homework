@@ -65,6 +65,6 @@ class SetDueTodo
 
   def set_due
     @todo.deadline = DateTime.parse(due_date)
-    @todo.save
+    @todo.save!
   end
 end

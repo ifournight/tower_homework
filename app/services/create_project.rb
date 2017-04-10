@@ -24,9 +24,11 @@ class CreateProject
     @team = Team.find(team_id)
 
     return nil unless check_user_access
-
-    @project = create_project
-    make_creator_collaborator
+    
+    ActiveRecord::Base.transaction do
+      @project = create_project
+      make_creator_collaborator
+    end
     @project
   end
 

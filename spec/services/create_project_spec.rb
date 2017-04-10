@@ -16,17 +16,15 @@ RSpec.describe CreateProject, '#do' do
     user = user.reload
 
     project = create_project.do
-    collaborators = project.collaborators
 
     expect(project.team.id).to eq team.id
     expect(project.creator.id).to eq user.id
-    expect(collaborators.include?(user)).to eq true
+    expect(project.collaborators.include?(user)).to eq true
     Access::ACCESS_GROUP_MEMBER[:PROJECT].each do |access_type|
       expect(Access.has_access?(user.id, project.id, project.class.name, access_type)).to eq true
     end
     Access::ACCESS_GROUP_PROJECT_MANAGER[:PROJECT].each do |access_type|
       expect(Access.has_access?(user.id, project.id, project.class.name, access_type)).to eq true
     end
-
   end
 end

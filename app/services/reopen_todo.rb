@@ -53,7 +53,7 @@ class ReopenTodo
   def reopen_todo
     @todo.completed = false
     @todo.edited_at = Time.zone.now
-    @todo.save
+    @todo.save!
   end
 
   def check_user_access

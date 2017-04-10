@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AssignTodo, '' do
+RSpec.describe AssignTodo, '#do' do
   before :each do
     @authorizer = create(:user, name: 'ifournight')
     @member = create(:user, name: 'momo')

@@ -21,7 +21,7 @@ class CreateTodo
     @creator = User.find(creator_id)
 
     unless check_user_access
-      errors[:creator_id] << "Creator #{creator_id} doesn't have access to create a todo in this project."
+      errors[:creator_id] << "doesn't have access to create a todo in this project."
       return nil
     end
 

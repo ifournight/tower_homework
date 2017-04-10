@@ -26,6 +26,7 @@ class AddTeamMember
     end
     unless valid_user(authorizer_id)
       errors[:authorizer_id] << 'Invalid authorizer_id'
+      nil
     end
 
     @user = User.find(member_id)
@@ -37,13 +38,12 @@ class AddTeamMember
       nil
     end
 
-    unless check_authorizer_access
-      errors[:authorizer_id] << "Authorizer doesn't have acess to add member"
-      nil
-    end
+    return nil unless check_authorizer_access
 
-    add_team_member
-    authority_team_memeber
+    ActiveRecord::Base.transaction do
+      add_team_member
+      authority_team_memeber
+    end
 
     @user
   end

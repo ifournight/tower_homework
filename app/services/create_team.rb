@@ -29,8 +29,11 @@ class CreateTeam
     end
 
     @user = User.find(creator_id)
-    @team = create_team
-    make_creator_superadmin
+
+    ActiveRecord::Base.transaction do
+      @team = create_team
+      make_creator_superadmin
+    end
     # notify ?
     # mailer ?
 
