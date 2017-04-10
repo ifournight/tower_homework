@@ -1,5 +1,6 @@
-<%= content_tag :section, class: 'section', id: "activities-team_#{@team.id}" do %>
-  <% if @activities.any? %>
+<% if @activities.any? %>
+  <%= content_tag :section, class: 'section', id: "activities-team_#{@team.id}" do %>
+
 
     <% @by_day_groups.each do |by_day_group| %>
 

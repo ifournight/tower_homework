@@ -1,5 +1,6 @@
 class ActivitiesController < ApplicationController
   def index
+    @activities = []
     if Team.exists?(session[:team_id])
       @team = Team.find session[:team_id]
       projects = current_user.anticipated_projects_in_team(@team)
