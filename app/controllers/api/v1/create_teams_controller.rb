@@ -4,7 +4,7 @@ class Api::V1::CreateTeamsController < ApplicationController
     @team = @create_team.do
 
     if @team
-      render json_api: @team, status: :created
+      render json: @team, status: :created
     else
       render json: { errors: @create_team.errors.full_messages },
              status: @create_team.status_code

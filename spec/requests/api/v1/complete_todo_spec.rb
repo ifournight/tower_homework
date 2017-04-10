@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe 'POST /api/v1/complete_todos' do
   before :each do
-    @todo = create(:todo)
-    @user = @todo.creator
+    @user = create(:user)
     sign_in @user
+    @project = create_logic_project(team_name: 'Citizen 4', project_name: 'journey', creator: @user)
+
+    @todo = create_logic_todo(title: 'First todo', creator: @user, project: @project)
   end
 
   it 'completes the todo' do

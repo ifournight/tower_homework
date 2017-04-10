@@ -1,19 +1,29 @@
-<section class='section' id="todo-list-section">
+<%= content_tag :section, class: 'section', id: "activities-team_#{@team.id}" do %>
   <% if @activities.any? %>
+
     <% @by_day_groups.each do |by_day_group| %>
-      <section class='section'>
+
+      <%= content_tag :section, id: "by-day_#{by_day_group[:day]}", class: 'section' do %>
+
         <h2 class='title is-h2'><%= by_day_group[:day] %></h2>
         <% by_day_group[:group].each do |project_id, by_project_group|  %>
           <% project = Project.find(project_id) %>
-          <h3 class='title is-h3'><%= link_to project.name, project %></h3>
-          <ul>
-            <% by_project_group.each do |activity| %>
-              <%= render activity %>
+
+            <%= content_tag :section, id: "by-d_#{by_day_group[:day]}-p_#{project.id}", class: 'section' do %>
+              <h3 class='title is-h3'><%= link_to project.name, project %></h3>
+              <ul>
+                <% by_project_group.each do |activity| %>
+                  <%= render activity %>
+                <% end %>
+              </ul>
             <% end %>
-          </ul>
-          <br>
+
         <% end %>
-      </section>
+
+      <% end %>
+
     <% end %>
+
   <% end %>
-</section>
+
+<% end %>

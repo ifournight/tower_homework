@@ -1,5 +1,6 @@
 <%= form_for create_todo, remote: true do |f| %>
   <%= f.hidden_field :creator_id, value: create_todo.creator_id %>
+  <%= f.hidden_field :project_id, value: create_todo.project_id %>
   <div class='field'>
     <p class='control'>
       <% if create_todo.errors[:title].any? %>

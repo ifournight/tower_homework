@@ -13,6 +13,6 @@ class Api::V1::CreateTodosController < ApplicationController
   private
 
   def create_todo_params
-    params.require(:create_todo).permit([:title, :creator_id])
+    params.require(:create_todo).permit([:title, :creator_id, :project_id])
   end
 end

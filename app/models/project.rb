@@ -11,6 +11,8 @@ class Project < ApplicationRecord
     end
   end
 
+  has_many :activities
+
   def collaborators
     Access
       .where(

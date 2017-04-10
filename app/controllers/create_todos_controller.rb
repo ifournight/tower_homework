@@ -5,14 +5,16 @@ class CreateTodosController < Todos::BaseController
 
     if @new_todo
       respond_to do |format|
-        format.html { redirect_to root_url }
+        format.html { redirect_to project_path(@new_todo) }
         format.js {}
       end
     else
       respond_to do |format|
         format.html do
-          @todos = Todo.order('created_at DESC')
-          render 'home/index'
+          project = Project.find(@create_todo.project_id)
+          @uncompleted_todos = project.todos.uncompleted
+          @completed_todos = project.todos.completed
+          render 'projects/show'
         end
         format.js {}
       end
@@ -22,6 +24,6 @@ class CreateTodosController < Todos::BaseController
   private
 
   def create_todo_params
-    params.require(:create_todo).permit([:title, :creator_id])
+    params.require(:create_todo).permit([:title, :creator_id, :project_id])
   end
 end
