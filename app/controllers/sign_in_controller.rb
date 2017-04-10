@@ -11,7 +11,7 @@ class SignInController < ApplicationController
 
     if user
       sign_in(user)
-      redirect_to activities_path
+      redirect_to root_path
     else
       render :new
     end

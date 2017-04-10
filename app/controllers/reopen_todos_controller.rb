@@ -4,9 +4,7 @@ class ReopenTodosController < Todos::BaseController
     @todo = @reopen_todo.do
 
     if @todo
-      redirect_to root_path
-    else
-      render 'home/index'
+      redirect_to project_path(@todo.project)
     end
   end
 
