@@ -6,7 +6,7 @@ Homework test for applying a job for Colorway
 ## Install
 
 ```
-bunble install
+bundle install
 rails db:migrate
 # 生成展示数据
 rails db:seed
